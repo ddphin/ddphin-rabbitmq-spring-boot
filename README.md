@@ -4,7 +4,7 @@
         <dependency>
             <groupId>com.github.ddphin</groupId>
             <artifactId>ddphin-rabbitmq-spring-boot-starter</artifactId>
-            <version>1.2.3</version>
+            <version>1.0.0</version>
         </dependency>
 ```
 ## 通用延时消息
