@@ -37,7 +37,7 @@ DDphinMessage message = new DDphinMessage(1L, "ddphin", new Date());
 this.sender.send(message, 5*1000L);
 ```
 - 实现消息处理器<br>
-基于延时消息鉴定器`RabbitmqCommonDelayQueueReceiver`消息类`DDphinMessage`实现消息处理器<br>
+基于延时消息监听器器`RabbitmqCommonDelayQueueReceiver`消息类`DDphinMessage`实现消息处理器<br>
 只需要继承`RabbitmqCommonQueueReceiverHandlerRegister<H,T>`并实现`RabbitmqCommonQueueReceiverHandler<T>`接口
   - H: 消息监听器
   - T: 自定义消息类
