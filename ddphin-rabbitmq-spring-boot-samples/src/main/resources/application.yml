@@ -1,0 +1,26 @@
+spring:
+  rabbitmq:
+    host: 120.78.89.124
+    port: 15674
+    username: admin
+    password: admin
+    virtual-host: /
+    connection-timeout: 15000
+    template:
+      mandatory: true
+    listener:
+      direct:
+        acknowledge-mode: manual
+      simple:
+        acknowledge-mode: manual
+        concurrency: 5
+        max-concurrency: 10
+    publisher-confirms: true
+    publisher-returns: true
+
+server:
+  servlet:
+    context-path: /api #设置项目ContextPath
+  port: 8080 #设置Tomcat端口，默认8080
+  tomcat:
+    uri-encoding: UTF-8 #设置Tomcat编码

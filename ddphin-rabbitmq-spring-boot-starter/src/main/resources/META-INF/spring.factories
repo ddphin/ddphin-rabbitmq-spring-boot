@@ -1,0 +1,4 @@
+# Auto Configure
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.ddphin.rabbitmq.configuration.RabbitmqAutoConfiguration,\
+  com.ddphin.rabbitmq.configuration.RabbitmqCommonDelayQueueAutoConfiguration
