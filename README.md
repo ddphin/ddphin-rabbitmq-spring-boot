@@ -1,5 +1,12 @@
 # Rabbitmq 通用延时消息 与 通用消息接处理
-
+usage and detail, cilck [here(ddphin-rabbitmq-spring-boot)](https://github.com/ddphin/ddphin-rabbitmq-spring-boot)
+```$xslt
+        <dependency>
+            <groupId>com.github.ddphin</groupId>
+            <artifactId>ddphin-rabbitmq-spring-boot-starter</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+```
 ## 通用延时消息
 - 自定义消息类
 ```$xslt
@@ -54,7 +61,10 @@ public class RabbitmqDelayDDphinMessageReceiverHandler
 - 自定义并注入延时消息发送器
 
   `根据需求自己实现`
-- 自定义消息监听器
+- 自定义消息监听器<br>
+只需要继承`RabbitmqCommonAbstractQueueReceiver`并实现`RabbitmqCommonQueueReceiver`接口<br>
+指定监听队列`@RabbitListener(queues = "xxxxx"})`,<br>
+然后调用`super.receiver(message, amqpMessage, channel)`即可
 ```$xslt
 @Service
 public class DDphinMessageQueueReceiver
