@@ -1,10 +1,7 @@
 package com.ddphin.rabbitmq.configuration;
 
 import com.ddphin.rabbitmq.receiver.impl.RabbitmqCommonDelayQueueReceiver;
-import com.ddphin.rabbitmq.sender.RabbitmqCommonDelayQueueSender;
-import com.ddphin.rabbitmq.sender.impl.RabbitmqCommonDelayQueueSenderImpl;
 import org.springframework.amqp.core.*;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -22,18 +19,18 @@ public class RabbitmqCommonDelayQueueAutoConfiguration {
     /**
      * 延迟队列 TTL 名称
      */
-    private static final String SENDER_COMMON_DELAY_QUEUE = RabbitmqCommonDelayQueueSender.SENDER_COMMON_DELAY_QUEUE;
+    private static final String SENDER_COMMON_DELAY_QUEUE = "sender.common.delay.queue";
     /**
      * DLX，dead letter发送到的 exchange
      * 此处的 exchange 很重要,具体延时消息就是发送到该交换机的
      */
-    private static final String SENDER_COMMON_DELAY_EXCHANGE = RabbitmqCommonDelayQueueSender.SENDER_COMMON_DELAY_EXCHANGE;
+    private static final String SENDER_COMMON_DELAY_EXCHANGE = "sender.common.delay.exchange";
 
     /**
      * routing key 名称
      * 此处的 routingKey 很重要要,具体消息发送在该 routingKey 的
      */
-    private static final String SENDER_COMMON_DELAY_ROUTING_KEY = RabbitmqCommonDelayQueueSender.SENDER_COMMON_DELAY_ROUTING_KEY;
+    private static final String SENDER_COMMON_DELAY_ROUTING_KEY = "sender.common.delay.routing.key";
 
 
     private static final String RECEIVER_COMMON_DELAY_QUEUE = RabbitmqCommonDelayQueueReceiver.RECEIVER_COMMON_DELAY_QUEUE;
@@ -99,11 +96,6 @@ public class RabbitmqCommonDelayQueueAutoConfiguration {
                 .bind(receiverCommonDelayQueue())
                 .to(receiverCommonDelayExchange())
                 .with(RECEIVER_COMMON_DELAY_ROUTING_KEY);
-    }
-
-    @Bean
-    public RabbitmqCommonDelayQueueSender rabbitmqCommonDelayQueueSender(RabbitTemplate rabbitTemplate) {
-        return new RabbitmqCommonDelayQueueSenderImpl(rabbitTemplate);
     }
 
     @Bean
