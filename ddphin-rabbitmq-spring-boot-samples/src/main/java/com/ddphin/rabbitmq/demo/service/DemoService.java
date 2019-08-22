@@ -1,9 +1,11 @@
 package com.ddphin.rabbitmq.demo.service;
 
-import com.ddphin.rabbitmq.sender.RabbitmqCommonDelayQueueSender;
+import com.ddphin.rabbitmq.configuration.RabbitmqCommonDelayQueueAutoConfiguration;
+import com.ddphin.rabbitmq.sender.RabbitmqCommonTxMessageSender;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 import java.util.Date;
@@ -17,12 +19,16 @@ import java.util.Date;
 @Service
 public class DemoService {
     @Autowired
-    private RabbitmqCommonDelayQueueSender sender;
+    private RabbitmqCommonTxMessageSender sender;
 
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor=Exception.class)
     @PostConstruct
     public void testSender() {
-        this.sender.send(new Date(), 5*1000L);
-        this.sender.send("ddphin", 10*1000L);
+        this.sender.send(
+                RabbitmqCommonDelayQueueAutoConfiguration.SENDER_COMMON_DELAY_EXCHANGE,
+                RabbitmqCommonDelayQueueAutoConfiguration.SENDER_COMMON_DELAY_ROUTING_KEY,
+                5*1000L,
+                new Date());
 
     }
 }

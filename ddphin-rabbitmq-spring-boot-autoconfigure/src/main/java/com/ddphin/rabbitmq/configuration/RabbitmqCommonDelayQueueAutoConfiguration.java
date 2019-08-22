@@ -24,13 +24,13 @@ public class RabbitmqCommonDelayQueueAutoConfiguration {
      * DLX，dead letter发送到的 exchange
      * 此处的 exchange 很重要,具体延时消息就是发送到该交换机的
      */
-    private static final String SENDER_COMMON_DELAY_EXCHANGE = "sender.common.delay.exchange";
+    public static final String SENDER_COMMON_DELAY_EXCHANGE = "sender.common.delay.exchange";
 
     /**
      * routing key 名称
      * 此处的 routingKey 很重要要,具体消息发送在该 routingKey 的
      */
-    private static final String SENDER_COMMON_DELAY_ROUTING_KEY = "sender.common.delay.routing.key";
+    public static final String SENDER_COMMON_DELAY_ROUTING_KEY = "sender.common.delay.routing.key";
 
 
     private static final String RECEIVER_COMMON_DELAY_QUEUE = RabbitmqCommonDelayQueueReceiver.RECEIVER_COMMON_DELAY_QUEUE;
