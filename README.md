@@ -81,7 +81,7 @@ rabbitmqCommonTxMessageSender.send(String exchange, String routingKey, final Obj
 ```$xslt
 rabbitmqCommonTxMessageSender.send(String exchange, String routingKey, Long millis, final Object message)
 ```
-## 通用延时消息
+### 通用延时消息
 - 自定义消息类
 ```$xslt
 @Data
@@ -129,7 +129,7 @@ public class RabbitmqDelayDDphinMessageReceiverHandler
 }
 ```
 
-## 通用消息接处理
+### 通用消息接处理
 - 自定义消息监听器<br>
 只需要继承`RabbitmqCommonAbstractQueueReceiver`并实现`RabbitmqCommonQueueReceiver`接口<br>
 指定监听队列`@RabbitListener(queues = "xxxxx"})`,<br>
