@@ -130,9 +130,6 @@ public class RabbitmqDelayDDphinMessageReceiverHandler
 ```
 
 ## 通用消息接处理
-- 自定义并注入延时消息发送器
-
-  `根据需求自己实现`
 - 自定义消息监听器<br>
 只需要继承`RabbitmqCommonAbstractQueueReceiver`并实现`RabbitmqCommonQueueReceiver`接口<br>
 指定监听队列`@RabbitListener(queues = "xxxxx"})`,<br>
