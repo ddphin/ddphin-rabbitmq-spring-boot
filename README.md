@@ -109,10 +109,10 @@ rabbitmqCommonTxMessageSender.send(
     message);
 ```
 - 实现消息处理器<br>
-基于延时消息监听器`RabbitmqCommonDelayQueueReceiver`消息类`DDphinMessage`实现消息处理器<br>
+基于延时消息监听器`RabbitmqCommonDelayQueueReceiver`和自定义消息类`DDphinMessage`实现消息处理器<br>
 只需要继承`RabbitmqCommonQueueReceiverHandlerRegister<H,T>`并实现`RabbitmqCommonQueueReceiverHandler<T>`接口
-  - H: 消息监听器
-  - T: 自定义消息类
+  - H: 消息监听器：`RabbitmqCommonDelayQueueReceiver`
+  - T: 自定义消息类：`DDphinMessage`
 ```$xslt
 @Slf4j
 @Service
@@ -152,4 +152,4 @@ public class DDphinMessageQueueReceiver
 - 创建待发送消息 与【通用延时消息 > 创建待发送消息】类似
 - 发送消息 与【通用延时消息 > 发送延时消息】类似
 - 实现消息处理器<br>
-基于自定义的消息监听器`DDphinMessageQueueReceiver`自定义的消息类实现消息处理器 与【通用延时消息 > 实现消息处理器】类似
+基于自定义的消息监听器`DDphinMessageQueueReceiver`和自定义的消息类实现消息处理器 与【通用延时消息 > 实现消息处理器】类似
