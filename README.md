@@ -1,5 +1,5 @@
 # Rabbitmq 事务消息 & 延迟消息 & 通用消息接收器
-- pom 引入
+pom 引入
 ```$xslt
         <dependency>
             <groupId>com.github.ddphin</groupId>
