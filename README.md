@@ -1,15 +1,14 @@
 # Rabbitmq 事务消息 & 延迟消息 & 通用消息接收器
-- pom 引入
 ```$xslt
         <dependency>
             <groupId>com.github.ddphin</groupId>
             <artifactId>ddphin-rabbitmq-spring-boot-starter</artifactId>
-            <version>1.0.0</version>
+            <version>1.0.1</version>
         </dependency>
 ```
 ## 功能
 - 事务消息
-<br>指生产者侧的事务消息发送。
+<br>指生产者侧的事务消息发送。保证消息的事务性与可靠性发送，可能会出现重复消息，极端情况下消息会保存为死消息需要人工处理，对于重复消息，消费者端需要做到幂等性
   - 事务消息逻辑
       - spring 事务中发送消息
          - 缓存当前事务需要发送的消息
@@ -81,7 +80,7 @@ rabbitmqCommonTxMessageSender.send(String exchange, String routingKey, final Obj
 ```$xslt
 rabbitmqCommonTxMessageSender.send(String exchange, String routingKey, Long millis, final Object message)
 ```
-## 通用延时消息
+### 通用延时消息
 - 自定义消息类
 ```$xslt
 @Data
@@ -129,10 +128,10 @@ public class RabbitmqDelayDDphinMessageReceiverHandler
 }
 ```
 
-## 通用消息接处理
+### 通用消息接收器
 - 自定义消息监听器<br>
 只需要继承`RabbitmqCommonAbstractQueueReceiver`并实现`RabbitmqCommonQueueReceiver`接口<br>
-指定监听队列`@RabbitListener(queues = "xxxxx"})`,<br>
+指定监听队列`@RabbitListener(queues = {"xxxxx"})`,<br>
 然后调用`super.receiver(message, amqpMessage, channel)`即可
 ```$xslt
 @Service
@@ -140,7 +139,7 @@ public class DDphinMessageQueueReceiver
         extends RabbitmqCommonAbstractQueueReceiver
         implements RabbitmqCommonQueueReceiver {
     @Override
-    @RabbitListener(queues = "DDphinMessageQueue"})
+    @RabbitListener(queues = {"DDphinMessageQueue"})
     public void receiver(org.springframework.messaging.Message message, 
                         org.springframework.amqp.core.Message amqpMessage, 
                         Channel channel) throws IOException {
