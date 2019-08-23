@@ -131,7 +131,7 @@ public class RabbitmqDelayDDphinMessageReceiverHandler
 ### 通用消息接收器
 - 自定义消息监听器<br>
 只需要继承`RabbitmqCommonAbstractQueueReceiver`并实现`RabbitmqCommonQueueReceiver`接口<br>
-指定监听队列`@RabbitListener(queues = "xxxxx"})`,<br>
+指定监听队列`@RabbitListener(queues = {"xxxxx"})`,<br>
 然后调用`super.receiver(message, amqpMessage, channel)`即可
 ```$xslt
 @Service
@@ -139,7 +139,7 @@ public class DDphinMessageQueueReceiver
         extends RabbitmqCommonAbstractQueueReceiver
         implements RabbitmqCommonQueueReceiver {
     @Override
-    @RabbitListener(queues = "DDphinMessageQueue"})
+    @RabbitListener(queues = {"DDphinMessageQueue"})
     public void receiver(org.springframework.messaging.Message message, 
                         org.springframework.amqp.core.Message amqpMessage, 
                         Channel channel) throws IOException {
