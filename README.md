@@ -64,6 +64,18 @@ spring
         max-concurrency: 10
     publisher-confirms: true
     publisher-returns: true
+    ddphin:
+      idPrepareTimeout: 60000    # 预发送队列超时时间，默认为60s
+      idDoTimeout: 60000         # 正式发送队列超时时间，默认为60s
+      retryCron: 0 0/1 * * * ?   # redis:id-redo -> redis:id-do 策略，默认为每隔一分钟
+      redoCron: 30 0/1 * * * ?   # redis:id-do -> redis:id-redo 策略，默认为每隔一分钟
+      clearCron: 0 0/1 * * * ?   # redis:data-normal -> redis:data-death 策略，默认为每隔一分钟
+      poolSize: 10               # 线程池大小，默认为10
+      enableRetry: true          # 是否开启 redis:id-redo -> redis:id-do
+      enableRedo: true           # 是否开启 redis:id-do -> redis:id-redo
+      enableClear: true          # 是否开启 redis:data-normal -> redis:data-death
+    
+    
 ```
 ## 用法
 ### 事务消息
