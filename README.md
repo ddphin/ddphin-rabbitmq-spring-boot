@@ -71,9 +71,9 @@ spring
       redoCron: 30 0/1 * * * ?   # redis:id-do -> redis:id-redo 策略，默认为每隔一分钟
       clearCron: 0 0/1 * * * ?   # redis:data-normal -> redis:data-death 策略，默认为每隔一分钟
       poolSize: 10               # 线程池大小，默认为10
-      enableRetry: true          # 是否开启 redis:id-redo -> redis:id-do
-      enableRedo: true           # 是否开启 redis:id-do -> redis:id-redo
-      enableClear: true          # 是否开启 redis:data-normal -> redis:data-death
+      enableRetry: true          # 是否开启 redis:id-redo -> redis:id-do，默认为开启
+      enableRedo: true           # 是否开启 redis:id-do -> redis:id-redo，默认为开启
+      enableClear: true          # 是否开启 redis:data-normal -> redis:data-death，默认为开启
     
     
 ```
