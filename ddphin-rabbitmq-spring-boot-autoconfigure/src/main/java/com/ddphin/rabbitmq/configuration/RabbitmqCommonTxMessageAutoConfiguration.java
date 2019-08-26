@@ -6,6 +6,7 @@ import com.ddphin.rabbitmq.sender.impl.RabbitmqCommonTxMessageSenderImpl;
 import com.ddphin.redis.helper.RedisHelper;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -26,13 +27,24 @@ public class RabbitmqCommonTxMessageAutoConfiguration {
     @Autowired
     private RedisHelper redisHelper;
 
+    @ConfigurationProperties("spring.rabbitmq.ddphin")
+    @Bean
+    public DdphinRabbitmqProperties properties() {
+        return new DdphinRabbitmqProperties();
+    }
+
     @Bean
     public RabbitmqCommonTxMessageSender rabbitmqCommonTxMessageSender() {
-        return new RabbitmqCommonTxMessageSenderImpl(rabbitTemplate, redisHelper);
+        return new RabbitmqCommonTxMessageSenderImpl(
+                rabbitTemplate,
+                redisHelper,
+                this.properties());
     }
 
     @Bean
     public SchedulingConfigurer rabbitmqRetrySchedulerConfigurer() {
-        return new RabbitmqRetrySchedulerConfigurer(this.rabbitmqCommonTxMessageSender());
+        return new RabbitmqRetrySchedulerConfigurer(
+                this.rabbitmqCommonTxMessageSender(),
+                this.properties());
     }
 }

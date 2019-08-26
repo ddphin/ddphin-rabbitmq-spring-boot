@@ -29,7 +29,7 @@
 
     <groupId>com.github.ddphin</groupId>
     <artifactId>ddphin-rabbitmq-spring-boot</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <packaging>pom</packaging>
 
     <name>ddphin-rabbitmq-spring-boot</name>
@@ -68,7 +68,7 @@
         <spring-boot.version>2.1.5.RELEASE</spring-boot.version>
         <lombok.version>1.18.8</lombok.version>
         <fastjson.version>1.2.47</fastjson.version>
-        <ddphin-rabbitmq.version>1.0.2</ddphin-rabbitmq.version>
+        <ddphin-rabbitmq.version>1.0.3</ddphin-rabbitmq.version>
     </properties>
 
     <dependencyManagement>

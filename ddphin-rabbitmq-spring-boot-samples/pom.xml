@@ -29,7 +29,7 @@
     <parent>
         <groupId>com.github.ddphin</groupId>
         <artifactId>ddphin-rabbitmq-spring-boot</artifactId>
-        <version>1.0.2</version>
+        <version>1.0.3</version>
     </parent>
 
     <artifactId>ddphin-rabbitmq-spring-boot-samples</artifactId>
