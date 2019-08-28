@@ -3,7 +3,7 @@
         <dependency>
             <groupId>com.github.ddphin</groupId>
             <artifactId>ddphin-rabbitmq-spring-boot-starter</artifactId>
-            <version>1.0.3</version>
+            <version>1.1.0</version>
         </dependency>
 ```
 ## 功能
@@ -32,8 +32,8 @@
       - spring 事务：负责消息事务管理
 - 延迟消息
   - 依赖:
-      - DLX
-      - DLK
+      - RabbitMQ 3.6.x 及以上版本
+      - 启用插件：rabbitmq-delayed-message-exchange
 - 通用消息接收器
 
 ## 配置
