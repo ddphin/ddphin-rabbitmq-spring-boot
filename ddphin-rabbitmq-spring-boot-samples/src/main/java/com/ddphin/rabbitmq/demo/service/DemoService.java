@@ -1,6 +1,5 @@
 package com.ddphin.rabbitmq.demo.service;
 
-import com.ddphin.rabbitmq.configuration.RabbitmqCommonDelayQueueAutoConfiguration;
 import com.ddphin.rabbitmq.receiver.impl.RabbitmqCommonDelayQueueReceiver;
 import com.ddphin.rabbitmq.sender.RabbitmqCommonTxMessageSender;
 import org.springframework.beans.factory.annotation.Autowired;
