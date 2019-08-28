@@ -7,9 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.PostConstruct;
-import java.util.Date;
-
 /**
  * DemoService
  *
@@ -22,13 +19,12 @@ public class DemoService {
     private RabbitmqCommonTxMessageSender sender;
 
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor=Exception.class)
-    @PostConstruct
-    public void testSender() {
+    public void testSender(Integer millis, String msg) {
         this.sender.send(
                 RabbitmqCommonDelayQueueReceiver.DDPHIN_COMMON_DELAY_EXCHANGE,
                 RabbitmqCommonDelayQueueReceiver.DDPHIN_COMMON_DELAY_ROUTING_KEY,
-                5*1000,
-                new Date());
+                millis,
+                msg);
 
     }
 }

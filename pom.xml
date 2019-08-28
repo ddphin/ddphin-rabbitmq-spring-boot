@@ -69,6 +69,7 @@
         <lombok.version>1.18.8</lombok.version>
         <fastjson.version>1.2.47</fastjson.version>
         <ddphin-rabbitmq.version>1.1.0</ddphin-rabbitmq.version>
+        <mybatis-spring-boot.version>2.0.1</mybatis-spring-boot.version>
     </properties>
 
     <dependencyManagement>
@@ -110,6 +111,13 @@
                 <version>${spring-boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis-spring-boot.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

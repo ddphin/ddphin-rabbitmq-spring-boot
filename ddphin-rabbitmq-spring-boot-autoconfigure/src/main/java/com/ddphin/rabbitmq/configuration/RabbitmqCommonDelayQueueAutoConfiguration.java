@@ -34,4 +34,9 @@ public class RabbitmqCommonDelayQueueAutoConfiguration {
                 .to(ddphinCommonDelayExchange())
                 .with(RabbitmqCommonDelayQueueReceiver.DDPHIN_COMMON_DELAY_ROUTING_KEY);
     }
+
+    @Bean
+    public RabbitmqCommonDelayQueueReceiver rabbitmqCommonDelayQueueReceiver() {
+        return new RabbitmqCommonDelayQueueReceiver();
+    }
 }
