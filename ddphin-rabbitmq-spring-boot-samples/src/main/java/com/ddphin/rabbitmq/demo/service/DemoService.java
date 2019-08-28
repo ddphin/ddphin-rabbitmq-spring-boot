@@ -1,6 +1,7 @@
 package com.ddphin.rabbitmq.demo.service;
 
 import com.ddphin.rabbitmq.configuration.RabbitmqCommonDelayQueueAutoConfiguration;
+import com.ddphin.rabbitmq.receiver.impl.RabbitmqCommonDelayQueueReceiver;
 import com.ddphin.rabbitmq.sender.RabbitmqCommonTxMessageSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,9 +26,9 @@ public class DemoService {
     @PostConstruct
     public void testSender() {
         this.sender.send(
-                RabbitmqCommonDelayQueueAutoConfiguration.SENDER_COMMON_DELAY_EXCHANGE,
-                RabbitmqCommonDelayQueueAutoConfiguration.SENDER_COMMON_DELAY_ROUTING_KEY,
-                5*1000L,
+                RabbitmqCommonDelayQueueReceiver.DDPHIN_COMMON_DELAY_EXCHANGE,
+                RabbitmqCommonDelayQueueReceiver.DDPHIN_COMMON_DELAY_ROUTING_KEY,
+                5*1000,
                 new Date());
 
     }
