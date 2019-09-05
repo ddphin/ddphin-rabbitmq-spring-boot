@@ -26,6 +26,6 @@ public class RabbitmqTestDelayQueueReceiverHandlerDate
     public Result process(Date data) {
         log.info("RabbitmqTestDelayQueueReceiverHandlerDate:\n" +
                 "    Date: {}", JSONObject.toJSONString(data));
-        return new Result(true, false, null);
+        return new Result(true, false, data);
     }
 }

@@ -23,6 +23,6 @@ public class RabbitmqTestDelayQueueReceiverHandlerString
     public Result process(String data) {
         log.info("RabbitmqTestDelayQueueReceiverHandlerString:\n" +
                 "    String: {}", data);
-        return new Result(true, false, null);
+        return new Result(true, false, data);
     }
 }
