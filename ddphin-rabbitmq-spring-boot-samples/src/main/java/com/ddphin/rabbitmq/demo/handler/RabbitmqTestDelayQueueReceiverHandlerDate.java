@@ -1,6 +1,7 @@
 package com.ddphin.rabbitmq.demo.handler;
 
 import com.alibaba.fastjson.JSONObject;
+import com.ddphin.rabbitmq.entity.Result;
 import com.ddphin.rabbitmq.receiver.RabbitmqCommonQueueReceiverHandler;
 import com.ddphin.rabbitmq.receiver.impl.RabbitmqCommonDelayQueueReceiver;
 import com.ddphin.rabbitmq.receiver.impl.RabbitmqCommonQueueReceiverHandlerRegister;
@@ -22,9 +23,9 @@ public class RabbitmqTestDelayQueueReceiverHandlerDate
         implements RabbitmqCommonQueueReceiverHandler<Date> {
 
     @Override
-    public Boolean process(Date data) {
+    public Result process(Date data) {
         log.info("RabbitmqTestDelayQueueReceiverHandlerDate:\n" +
                 "    Date: {}", JSONObject.toJSONString(data));
-        return null;
+        return new Result(true, false, null);
     }
 }

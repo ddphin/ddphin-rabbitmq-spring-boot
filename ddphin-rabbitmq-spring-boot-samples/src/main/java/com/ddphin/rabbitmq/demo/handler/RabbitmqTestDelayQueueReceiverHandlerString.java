@@ -1,5 +1,6 @@
 package com.ddphin.rabbitmq.demo.handler;
 
+import com.ddphin.rabbitmq.entity.Result;
 import com.ddphin.rabbitmq.receiver.RabbitmqCommonQueueReceiverHandler;
 import com.ddphin.rabbitmq.receiver.impl.RabbitmqCommonDelayQueueReceiver;
 import com.ddphin.rabbitmq.receiver.impl.RabbitmqCommonQueueReceiverHandlerRegister;
@@ -19,9 +20,9 @@ public class RabbitmqTestDelayQueueReceiverHandlerString
         implements RabbitmqCommonQueueReceiverHandler<String> {
 
     @Override
-    public Boolean process(String data) {
+    public Result process(String data) {
         log.info("RabbitmqTestDelayQueueReceiverHandlerString:\n" +
                 "    String: {}", data);
-        return null;
+        return new Result(true, false, null);
     }
 }
