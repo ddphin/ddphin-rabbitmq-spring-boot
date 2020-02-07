@@ -1,9 +1,11 @@
 package com.ddphin.rabbitmq.configuration;
 
+import com.ddphin.jedis.helper.JedisHelper;
 import com.ddphin.rabbitmq.scheduler.RabbitmqRetrySchedulerConfigurer;
+import com.ddphin.rabbitmq.sender.RabbitmqCommonTxMessageMonitor;
 import com.ddphin.rabbitmq.sender.RabbitmqCommonTxMessageSender;
+import com.ddphin.rabbitmq.sender.impl.RabbitmqCommonTxMessageMonitorImpl;
 import com.ddphin.rabbitmq.sender.impl.RabbitmqCommonTxMessageSenderImpl;
-import com.ddphin.redis.helper.RedisHelper;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -11,6 +13,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.SchedulingConfigurer;
+
+import java.io.IOException;
 
 /**
  * RabbitmqCommonTxMessageAutoConfiguration
@@ -20,31 +24,21 @@ import org.springframework.scheduling.annotation.SchedulingConfigurer;
  */
 @Configuration
 @EnableScheduling
-public class RabbitmqCommonTxMessageAutoConfiguration {
+public class RabbitmqCommonTxMessageSenderAutoConfiguration {
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
     @Autowired
-    private RedisHelper redisHelper;
+    private JedisHelper jedisHelper;
 
-    @ConfigurationProperties("spring.rabbitmq.ddphin")
-    @Bean
-    public DdphinRabbitmqProperties properties() {
-        return new DdphinRabbitmqProperties();
-    }
+    @Autowired
+    private DdphinRabbitmqProperties properties;
 
     @Bean
-    public RabbitmqCommonTxMessageSender rabbitmqCommonTxMessageSender() {
+    public RabbitmqCommonTxMessageSender rabbitmqCommonTxMessageSender() throws IOException {
         return new RabbitmqCommonTxMessageSenderImpl(
                 rabbitTemplate,
-                redisHelper,
-                this.properties());
-    }
-
-    @Bean
-    public SchedulingConfigurer rabbitmqRetrySchedulerConfigurer() {
-        return new RabbitmqRetrySchedulerConfigurer(
-                this.rabbitmqCommonTxMessageSender(),
-                this.properties());
+                jedisHelper,
+                properties);
     }
 }

@@ -5,6 +5,7 @@ import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.amqp.support.converter.MessageConverter;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -28,5 +29,11 @@ public class RabbitmqAutoConfiguration {
         rabbitTemplate.setMessageConverter(this.messageConverter());
         rabbitTemplate.setMandatory(true);
         return rabbitTemplate;
+    }
+
+    @ConfigurationProperties("spring.rabbitmq.ddphin")
+    @Bean
+    public DdphinRabbitmqProperties properties() {
+        return new DdphinRabbitmqProperties();
     }
 }

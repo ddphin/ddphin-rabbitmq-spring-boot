@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <!--
   ~ The MIT License (MIT)
   ~
@@ -33,32 +32,34 @@
         <version>1.2.0</version>
     </parent>
 
-    
-    <artifactId>ddphin-rabbitmq-spring-boot-starter</artifactId>
-    <name>ddphin-rabbitmq-spring-boot-starter</name>
-
+    <artifactId>ddphin-rabbitmq-monitor-spring-boot-autoconfigure</artifactId>
+    <name>ddphin-rabbitmq-monitor-spring-boot-autoconfigure</name>
 
     <dependencies>
         <!-- spring-boot-->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
-
-        <!-- rabbitmq -->
-        <dependency>
             <groupId>com.github.ddphin</groupId>
             <artifactId>ddphin-rabbitmq</artifactId>
         </dependency>
+
         <dependency>
             <groupId>com.github.ddphin</groupId>
             <artifactId>ddphin-rabbitmq-spring-boot-autoconfigure</artifactId>
         </dependency>
+
+        <!-- lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
         <dependency>
             <groupId>com.github.ddphin</groupId>
-            <artifactId>ddphin-rabbitmq-sender-spring-boot-autoconfigure</artifactId>
+            <artifactId>ddphin-jedis-spring-boot-starter</artifactId>
+            <version>1.0.0</version>
         </dependency>
+
     </dependencies>
 
 </project>
-

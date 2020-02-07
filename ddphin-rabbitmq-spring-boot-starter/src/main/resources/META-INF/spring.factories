@@ -2,4 +2,4 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
   com.ddphin.rabbitmq.configuration.RabbitmqAutoConfiguration,\
   com.ddphin.rabbitmq.configuration.RabbitmqCommonDelayQueueAutoConfiguration, \
-  com.ddphin.rabbitmq.configuration.RabbitmqCommonTxMessageAutoConfiguration
+  com.ddphin.rabbitmq.configuration.RabbitmqCommonTxMessageSenderAutoConfiguration

@@ -1,1 +1,1 @@
-provides: ddphin-rabbitmq-spring-boot-autoconfigure,ddphin-rabbitmq
+provides: ddphin-rabbitmq-spring-boot-autoconfigure,ddphin-rabbitmq-sender-spring-boot-autoconfigure,ddphin-rabbitmq

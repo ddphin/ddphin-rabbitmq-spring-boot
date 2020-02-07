@@ -34,8 +34,8 @@
     </parent>
 
     
-    <artifactId>ddphin-rabbitmq-spring-boot-starter</artifactId>
-    <name>ddphin-rabbitmq-spring-boot-starter</name>
+    <artifactId>ddphin-rabbitmq-monitor-spring-boot-starter</artifactId>
+    <name>ddphin-rabbitmq-monitor-spring-boot-starter</name>
 
 
     <dependencies>
@@ -54,9 +54,10 @@
             <groupId>com.github.ddphin</groupId>
             <artifactId>ddphin-rabbitmq-spring-boot-autoconfigure</artifactId>
         </dependency>
+
         <dependency>
             <groupId>com.github.ddphin</groupId>
-            <artifactId>ddphin-rabbitmq-sender-spring-boot-autoconfigure</artifactId>
+            <artifactId>ddphin-rabbitmq-monitor-spring-boot-autoconfigure</artifactId>
         </dependency>
     </dependencies>
 
