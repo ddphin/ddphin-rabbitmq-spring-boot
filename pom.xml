@@ -70,7 +70,7 @@
     <properties>
         <spring-boot.version>2.1.5.RELEASE</spring-boot.version>
         <lombok.version>1.18.8</lombok.version>
-        <fastjson.version>1.2.47</fastjson.version>
+        <fastjson.version>1.2.83</fastjson.version>
         <ddphin-rabbitmq.version>1.2.0</ddphin-rabbitmq.version>
         <mybatis-spring-boot.version>2.0.1</mybatis-spring-boot.version>
     </properties>
